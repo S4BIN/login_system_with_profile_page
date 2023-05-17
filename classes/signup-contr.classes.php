@@ -1,19 +1,19 @@
 <?php 
 
-class SignupContr {
+class SignupContr extends Signup{
     private $uid;
     private $pwd;
     private $pwdRepeat;
     private $email;
 
     public function __construct($uid, $pwd, $pwdRepeat, $email) {
-        $this->$uid = $uid;
-        $this->$pwd = $pwd;
-        $this->$pwdRepeat = $pwdRepeat;
-        $this->$email = $email;
+        $this->uid = $uid;
+        $this->pwd = $pwd;
+        $this->pwdRepeat = $pwdRepeat;
+        $this->email = $email;
     }
 
-    private function signuoUser() {
+    public function signupUser() {
         if($this->emptyInput() == false) {
             // echo "Empty input!";
             header("loaction: ../index.php?error=emptyinput");
@@ -46,7 +46,7 @@ class SignupContr {
 
     private function emptyInput() {
         $result;
-        if(empty($this->$uid) || empty($this->$pwd) || empty($this->$pwdRepeat) || empty($this->$email)) {
+        if(empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->email)) {
             $result = false;
         }
         else {
@@ -90,7 +90,7 @@ class SignupContr {
 
     private function uidTakenCheck() {
         $result;
-        if (!$this->checkUser($this->$uid, $this->$email)){
+        if (!$this->checkUser($this->uid, $this->email)){
             $result = false;
         }
         else{

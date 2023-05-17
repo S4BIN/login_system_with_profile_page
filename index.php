@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +24,20 @@
                 </ul>
             </div>
             <ul class="menu-member">
-                <li><a href="#">SIGN UP</a></li>
-                <li><a href="#" class="login-button">LOGIN</a></li>
+                <?php
+                if(isset($_SESSION["userid"])) {
+                ?>
+                    <li><a href="#"><?php echo $_SESSION["useruid"]; ?></a></li>
+                    <li><a href="includes/logout.inc.php" class="login-button">LOGOUT</a></li>
+                <?php
+                    }
+                    else {
+                ?>
+                    <li><a href="#">SIGN UP</a></li>
+                    <li><a href="#" class="login-button">LOGIN</a></li>
+                <?php
+                    }
+                ?>    
             </ul>
         </nav>
     </header>
@@ -57,7 +73,7 @@
             </div>
             <div class="index-login-login">
                 <h4>LOGIN</h4>
-                <p>Don't have an account up here</p>
+                <p>Login here!</p>
                     <form action="includes/login.inc.php" method="post">
                         <input type="text" name="uid" placeholder="Username">
                         <input type="password" name="pwd" placeholder="Password">
