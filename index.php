@@ -21,7 +21,7 @@
             </div>
             <ul class="menu-member">
                 <li><a href="#">SIGN UP</a></li>
-                <li><a href="#">LOGIN</a></li>
+                <li><a href="#" class="login-button">LOGIN</a></li>
             </ul>
         </nav>
     </header>

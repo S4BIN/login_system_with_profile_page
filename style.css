@@ -68,6 +68,18 @@ header nav div {
     margin-right: 10px;
 }
 
+.login-button {
+    background-color: rgb(21, 108, 223);
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.login-button:hover {
+    background-color: #fff;
+    color: rgb(21, 108, 223);
+}
+
 .index-intro {
     padding-top: 50px;
     padding-bottom: 30px;
@@ -86,7 +98,7 @@ header nav div {
 }
 
 .index-intro-c1 {
-    margin-right: 40px;
+    margin-right: 75px;
 }
 
 .index-intro-c1 p {
@@ -167,6 +179,7 @@ header nav div {
     padding: 10px 10px;
     font-weight: bold;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .index-login-signup p,
