@@ -12,7 +12,7 @@ class LoginContr extends Login{
     public function loginUser() {
         if($this->emptyInput() == false) {
             // echo "Empty input!";
-            header("loaction: ../index.php?error=emptyinput");
+            header("location: ../index.php?error=emptyinput");
             exit();
         }
 

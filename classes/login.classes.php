@@ -13,7 +13,7 @@ class Login extends Dbh{
         $loginData = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if(count($loginData ) == 0) {
                     $stmt = null;
-                    header("location: login.php?error=usernotfound");
+                    header("location: ../index.php?error=usernotfound");
                     exit();
         }
         return $profileData;
