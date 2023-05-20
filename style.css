@@ -194,3 +194,13 @@ header nav div {
 .index-login-login h4 {
     color: #fff;
 }
+
+.about, 
+.info {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 400px;
+    background-color: #161616;
+    padding: 40px;
+    border-radius: 10px;
+}
