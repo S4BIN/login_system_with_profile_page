@@ -1,40 +1,41 @@
 <?php
 
-class Login extends Dbh{
-    protected function getUser($uid, $pwd) {
-        $stmt = $this->connect()->prepare('SELECT users_pwd FROM users WHERE users_uid = ? OR users_email = ?;'); 
-
-        if(!$stmt->execute(array($uid, $uid))) {
+class Login extends Dbh
+{
+    protected function getUser($uid, $pwd)
+    {
+        $stmt = $this->connect()->prepare('SELECT * FROM users WHERE users_uid = ? OR users_email = ?;');
+        
+        if (!$stmt->execute([$uid, $uid])) {
             $stmt = null;
             header("location: ../index.php?error=stmtfailed");
             exit();
         }
 
         $loginData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if(count($loginData ) == 0) {
-                    $stmt = null;
-                    header("location: ../index.php?error=usernotfound");
-                    exit();
+        if (count($loginData) == 0) {
+            $stmt = null;
+            header("location: ../index.php?error=usernotfound");
+            exit();
         }
-        return $profileData;
 
-        $checkPwd = password_verify($pwd, $pwdHashed[0]["users_pwd"]);
+        $pwdHashed = $loginData[0]["users_pwd"];
+        $checkPwd = password_verify($pwd, $pwdHashed);
 
-        if($checkPwd == false) {
+        if ($checkPwd == false) {
             $stmt = null;
             header("location: ../index.php?error=wrongpassword");
             exit();
-        }
-        elseif($checkPwd == true) {
-            $stmt = $this->connect()->prepare('SELECT * FROM users WHERE (users_uid = ? OR users_email = ?) AND users_pwd = ?;'); 
-
-            if(!$stmt->execute(array($uid, $pwd, $pwdHashed[0]['user_pwd']))) {
+        } elseif ($checkPwd == true) {
+            $stmt = $this->connect()->prepare('SELECT * FROM users WHERE (users_uid = ? OR users_email = ?) AND users_pwd = ?;');
+            
+            if (!$stmt->execute([$uid, $uid, $pwdHashed])) {
                 $stmt = null;
                 header("location: ../index.php?error=stmtfailed");
                 exit();
             }
 
-            if($stmt->rowCount() == 0) {
+            if ($stmt->rowCount() == 0) {
                 $stmt = null;
                 header("location: ../index.php?error=usernotfound");
                 exit();
@@ -47,8 +48,6 @@ class Login extends Dbh{
             $_SESSION["useruid"] = $user[0]["users_uid"];
 
             $stmt = null;
-    
         }
-        $stmt = null;
     }
 }
