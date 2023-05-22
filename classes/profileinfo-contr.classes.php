@@ -18,14 +18,25 @@ class ProfileInfoContr extends ProfileInfo {
     }
 
     public function updateProfileInfo($about, $introTitle, $introText) {
+        // Error handlers
+        if($this->emptyInputCheck($about, $introTitle, $introText) == true) {
+            header("location: ../profilesettings.php?error=emptyinput");
+            exit();
+        }
 
+        // Update profile info
+        $this->setNewProfileInfo($about, $introTitle, $introText, $this->$userId);
     }
 
     private function emptyInputCheck($about, $introTitle, $introText) {
         $result;
         if(empty($about) || empty($introTitle) || empty($introText)) {
+            $result = true;
+        }
+        else {
             $result = false;
         }
+        return $result;
     }
 
 }
