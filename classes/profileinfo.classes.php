@@ -4,7 +4,7 @@ class ProfileInfo extends Dbh {
 
     protected function getProfileInfo($userId) {
         $stmt = $this->connect()->prepare('SELECT * FROM profiles WHERE users_id = ?;');
-        if($stmt->execute(array($usersId))) {
+        if($stmt->execute(array($userId))) {
             $stmt = null;
             header("location: profile.php?error=stmtfailed");
             exit();

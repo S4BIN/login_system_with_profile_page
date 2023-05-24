@@ -5,7 +5,7 @@ class ProfileInfoContr extends ProfileInfo {
     private $userId;
     private $userUid;
 
-    public function __constract($userId, $userUid) {
+    public function __construct($userId, $userUid) {
         $this->userId = $userId;
         $this->userUid = $userUid;
     }
@@ -14,7 +14,7 @@ class ProfileInfoContr extends ProfileInfo {
         $profileAbout = "Some about random text for profile";
         $profileTitle = "Hi! I'm " . $this->userUid;
         $profileText = "Welcome to my profile page! Soon I'll be able to tell you more about myself.";
-        $this->setProfileInfo($profileAbout, $profileTitle, $profileText, $this->$userId);
+        $this->setProfileInfo($profileAbout, $profileTitle, $profileText, $this->userId);
     }
 
     public function updateProfileInfo($about, $introTitle, $introText) {
@@ -25,7 +25,7 @@ class ProfileInfoContr extends ProfileInfo {
         }
 
         // Update profile info
-        $this->setNewProfileInfo($about, $introTitle, $introText, $this->$userId);
+        $this->setNewProfileInfo($about, $introTitle, $introText, $this->userId);
     }
 
     private function emptyInputCheck($about, $introTitle, $introText) {

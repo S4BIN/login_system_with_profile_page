@@ -17,6 +17,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     //Running error handlers and user signup
     $signup->signupUser();
 
+    $userId = $signup->fetchUserId($uid);
+
+    // Instantinate ProfileInfoContr class
+
+    include "../classes/profileinfo.classes.php";
+    include "../classes/profileinfo-contr.classes.php";
+    $profileInfo = new ProfileInfoContr($userId, $uid);
+    $profileInfo->defaultProfileInfo();
+
     //Going to back to front page
     header("location: ../index.php?error=none");
 }
