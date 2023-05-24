@@ -10,7 +10,7 @@ class ProfileInfo extends Dbh {
             exit();
         }
 
-        if(!$stmt->rowCount() == 0) {
+        if($stmt->rowCount() == 0) {
             $stmt = null;
             header("location: profile.php?error=profilenotfound");
             exit();

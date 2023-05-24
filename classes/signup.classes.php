@@ -36,7 +36,7 @@ class Signup extends Dbh{
 
     protected function getUserId($uid) {
         $stmt = $this->connect()->prepare('SELECT users_id FROM users WHERE users_uid = ?;');
-        if($stmt->execute(array($uid))) {
+        if(!$stmt->execute(array($uid))) {
             $stmt = null;
             header("location: profile.php?error=stmtfailed");
             exit();
