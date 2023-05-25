@@ -5,18 +5,18 @@ class ProfileInfoView extends ProfileInfo {
     public function fetchAbout($userId) {
         $profileInfo = $this->getProfileInfo($userId);
 
-        echo $profileInfo[0]["profile-about"];
+        echo $profileInfo[0]["profiles_about"];
     }
 
     public function fetchTitle($userId) {
         $profileInfo = $this->getProfileInfo($userId);
 
-        echo $profileInfo[0]["profile-introtitle"];
+        echo $profileInfo[0]["profiles_introtitle"];
     }
 
     public function fetchText($userId) {
         $profileInfo = $this->getProfileInfo($userId);
 
-        echo $profileInfo[0]["profile-introtext"];
+        echo $profileInfo[0]["profiles_introtext"];
     }
 }
