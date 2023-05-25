@@ -7,6 +7,13 @@
     $profileInfo = new ProfileInfoView();
 ?>
 
+<p style="color:black">
+    <?php
+        echo $_SESSION["useruid"];
+    ?>
+</p>
+<a href="profilesettings.php">PROFILE SETTINGS</a>
+
 <div class="info">
     <h3>
         <?php
